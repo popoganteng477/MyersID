@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MYERS Community</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    background:url('https://files.catbox.moe/5ocdic.jpg') center/cover fixed;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+}
+
+.container{
+    width:100%;
+    max-width:520px;
+    padding:30px 20px 50px;
+    text-align:center;
+}
+
+.fade{
+    opacity:0;
+    transform:translateY(30px);
+    animation:fadeUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.95) forwards;
+}
+.delay-1{animation-delay:0.3s}
+.delay-2{animation-delay:0.6s}
+.delay-3{animation-delay:0.9s}
+.delay-4{animation-delay:1.3s}
+.delay-5{animation-delay:1.7s}
+.delay-6{animation-delay:2.1s}
+
+@keyframes fadeUp{
+    to{opacity:1;transform:translateY(0)}
+}
+
+/* Khusus untuk cabang-info: tambah sedikit scale agar lebih hidup */
+.cabang-info.fade{
+    transform:translateY(30px) scale(0.95);
+}
+@keyframes fadeUpScale{
+    to{opacity:1;transform:translateY(0) scale(1)}
+}
+.cabang-info{
+    animation:fadeUpScale 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.95) forwards;
+}
+
+.welcome{
+    font-size:1.6rem;
+    letter-spacing:3px;
+    font-weight:800;
+    color:#ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    margin-bottom:16px;
+    text-transform:uppercase;
+    animation:welcomeGlow 3s ease-in-out infinite;
+}
+
+@keyframes welcomeGlow{
+    0%,100%{text-shadow:2px 2px 4px rgba(0,0,0,0.7), 0 0 0 rgba(255,255,255,0)}
+    50%{text-shadow:2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(255,255,255,.6)}
+}
+
+/* ================= PENJELASAN CABANG ================= */
+.cabang-info{
+    font-size:1rem;
+    font-weight:500;
+    line-height:1.6;
+    margin:24px auto 40px;
+    max-width:420px;
+    opacity:.95;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+}
+
+/* ================= GROUP BUTTON ================= */
+.group-btn{
+    height:70px;
+    margin-bottom:20px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    color:#fff;
+    font-size:1.3rem;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    background:linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+    border:2px solid rgba(255,255,255,.4);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transition:all .4s cubic-bezier(.25,.8,.25,1);
+    position:relative;
+    overflow:hidden;
+}
+
+.group-btn::before{
+    content:'';
+    position:absolute;
+    top:0; left:0; right:0; bottom:0;
+    background:linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+    opacity:0;
+    transition:opacity .4s;
+}
+
+.group-btn:hover{
+    transform:translateY(-8px) scale(1.05);
+    box-shadow:0 15px 35px rgba(0,0,0,0.4);
+    background:linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1));
+    border-color:rgba(255,255,255,.6);
+}
+
+.group-btn:hover::before{
+    opacity:1;
+}
+
+.group-btn:active{
+    transform:translateY(-4px) scale(1.02);
+}
+
+/* ================= RULES CARD ================= */
+.rules{
+    margin-top:28px;
+    padding:24px 18px 22px;
+    border-radius:20px;
+    background:rgba(0,0,0,.35);
+    border:1px solid rgba(255,255,255,.25);
+    backdrop-filter: blur(10px);
+    text-align:left;
+}
+
+/* ================= LOGO & WELCOME IMAGE ANIMATION ================= */
+.welcome-img,
+.rules-logo{
+    width:280px;
+    display:block;
+    margin:0 auto 30px;
+    animation:
+        logoFloat 4s ease-in-out infinite,
+        logoBreath 6s ease-in-out infinite;
+}
+
+@keyframes logoFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
+}
+
+@keyframes logoBreath{
+    0%,100%{filter:drop-shadow(0 0 0 rgba(255,255,255,0))}
+    50%{filter:drop-shadow(0 0 18px rgba(255,255,255,.45))}
+}
+
+.rules-header{
+    text-align:center;
+    margin-bottom:16px;
+}
+
+.rules-logo{
+    width:170px;
+    margin-bottom:10px;
+}
+
+.rules-title{
+    font-size:.95rem;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    opacity:.95;
+}
+
+/* ================= RULES LIST ================= */
+.rules ul{
+    list-style:none;
+    font-size:.88rem;
+    line-height:1.65;
+}
+
+.rules li{margin-bottom:6px}
+
+/* ================= FOOTER ================= */
+.footer{
+    margin-top:28px;
+    font-size:.75rem;
+    letter-spacing:1px;
+    opacity:.7;
+    text-align:center;
+}
+
+/* MOBILE */
+@media(max-width:480px){
+    .welcome-img,
+    .rules-logo{width:220px}
+    .welcome{font-size:1.4rem}
+    .group-btn{
+        height:64px;
+        font-size:1.2rem;
+    }
+    .cabang-info{
+        font-size:.95rem;
+        margin:20px auto 35px;
+        padding:0 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="welcome fade">
+    Welcome to Web Marga Myers
+</div>
+
+<!-- Gambar Welcome -->
+<div class="fade delay-1">
+    <img src="https://files.catbox.moe/lr482s.png" class="welcome-img" alt="Welcome">
+</div>
+
+<a href="https://chat.whatsapp.com/JByKvLSa1ysCKV9XW4FJzF" class="group-btn fade delay-2">
+    CABANG 1
+</a>
+
+<a href="https://chat.whatsapp.com/GA2rzKxeIuFHaZ1N2tURM1" class="group-btn fade delay-3">
+    CABANG 2
+</a>
+
+<div class="cabang-info fade delay-4">
+    Silakan pilih salah satu cabang di atas dan masuk ke grup WhatsApp.<br>
+    Setelah bergabung, langsung tanyakan syarat-syarat lengkap serta info lebih lanjut kepada Admin di dalam grup ya!
+</div>
+
+<div class="rules fade delay-5">
+
+    <div class="rules-header">
+        <img src="https://files.catbox.moe/i88lho.png" class="rules-logo" alt="MYERS Logo">
+        <div class="rules-title">MYERS Community — Official</div>
+    </div>
+
+    <ul>
+        <li>⤷ wajib konten minimal 1 minggu sekali (wajib) #myersboys #margamyers #myersledis</li>
+        <li>⤷ no bantah owner / founder / admin</li>
+        <li>⤷ no drama atau senggol kecuali diserang duluan</li>
+        <li>⤷ aktif grup minimal nimbrung 1x sehari</li>
+        <li>⤷ no circle², anggap keluarga sendiri</li>
+        <li>⤷ no keluar masuk marga</li>
+        <li>⤷ wajib CN / ganti nama: 𝕸уᥱrs</li>
+        <li>⤷ wajib follow TikTok marga</li>
+        <li>⤷ bercanda sewajarnya</li>
+        <li>⤷ melanggar rules = kick</li>
+        <li>⤷ no double marga</li>
+        <li>⤷ no baperan & no konflik</li>
+    </ul>
+
+</div>
+
+<div class="footer fade delay-6">
+    © MYERS Community
+</div>
+
+</div>
+
+</body>
+  </html>
